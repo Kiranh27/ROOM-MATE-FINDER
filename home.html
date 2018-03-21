@@ -1,0 +1,97 @@
+<html>
+<head>
+<style>
+#home {
+    width: 100px;
+    height: 80px;
+    background: url(img_navsprites.gif) 0 0;
+}
+
+#next {
+    width: 150px;
+    height: 80px;
+    background: url(img_navsprites.gif) -91px 0;
+}
+#last{
+    width: 150px;
+    height: 80px;
+    background: url(img_navsprites.gif) -91px 0;
+    float: right;
+    }
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #336BFF;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+.login{
+	position: absolute;
+	top: calc(50% - 150px);
+	left: calc(50% - 150px);
+	height: 150px;
+	width: 350px;
+	padding: 10px;
+	z-index: 2;
+}
+#em{
+   width:150px;
+   height:120px;
+   position: absolute;
+}
+.signup{
+   width: 18%;
+   text-align: right;
+   margin: 50px 0;
+}
+</style>
+</head>
+<body>
+
+
+<img id="home" src="india.png">
+<img id="next" src="digi.png">
+<img id="next" src="mob.jpg" align="right">
+<div>
+<img id="cocuk" src="lock.gif">
+</div>
+ <div class="login">
+      <label><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <button type="submit">Login</button>
+      <input type="checkbox" checked="checked"> Remember me
+    <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<h1> Don't you have an account???</h1>
+<img id="em" src="emoticon.jpg">
+<a href="signup.html">
+<button class="signup">Sign Up</button>
+</a>
+
+
+</body>
+</html>

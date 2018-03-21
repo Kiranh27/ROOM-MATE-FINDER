@@ -1,0 +1,176 @@
+<html>
+<head>
+<style>
+#home {
+    width: 100px;
+    height: 80px;
+    background: url(img_navsprites.gif) 0 0;
+}
+
+#next {
+    width: 150px;
+    height: 80px;
+    background: url(img_navsprites.gif) -91px 0;
+}
+#last{
+    width: 150px;
+    height: 80px;
+    background: url(img_navsprites.gif) -91px 0;
+    float: right;
+    }
+div.container
+{
+  width: 100%;
+border: 1px solid gray;
+background-image:url("C:\Users\Hema Lulla\Desktop\wp 4 sem\amazon.jpeg");
+ }
+nav 
+{
+    float: left;
+    font-size:20;
+    max-width: 160px;
+    margin: -2;
+    padding: 0em;
+}
+article
+{
+    margin-left: 200px;
+    border-left: 1px solid gray;
+     height:70%; 
+     padding:8em;
+}
+
+
+
+.button {
+background-color:  blue;
+    border: none;
+    color: white;
+    padding:10px 55px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 3px 3px;
+    cursor: pointer;
+    left:50%;
+}
+.button {border-radius: 20px;}
+.ed{
+border-style:solid;
+border-width:thin;
+border-color:#00CCFF;
+padding:5px;
+margin-bottom: 4px;
+}
+#button1{
+text-align:center;
+font-family:Arial, Helvetica, sans-serif;
+border-style:solid;
+border-width:thin;
+border-color:#00CCFF;
+padding:5px;
+background-color:#00CCFF;
+height: 34px;
+}
+#imagelist{
+border: thin solid silver;
+float:left;
+padding:5px;
+width:auto;
+margin: 0 5px 0 0;
+}
+p{
+margin:0;
+padding:0;
+text-align: center;
+font-style: italic;
+font-size: smaller;
+text-indent: 0;
+}
+#caption{
+margin-top: 5px;
+}
+img{
+height: 225px;
+}
+
+
+</style>
+</head>
+<body>
+<img id="home" src="india.png">
+<img id="next" src="digi.png">
+<img id="next" src="mob.jpg" align="right">
+<div class="container">
+<nav>
+<a href= "dashboard.php" class="button">Dashboard</a><br>
+<a href= "issued.php" class="button">Issued Documents</a><br>
+<a href= "shared.php" class="button">Shared Documents</a><br>
+<a href= "upload.php" class="button">Uploaded Documents</a><br>
+
+
+</nav>
+<article>
+<form action="addexec.php" method="post" enctype="multipart/form-data" name="addroom">
+ Select Image: <br />
+ <input type="file" name="image" class="ed"><br />
+ Caption<br />
+ <input name="caption" type="text" class="ed" id="brnu" />
+ <br />
+ <input type="submit" name="Submit" value="Upload" id="button1" />
+ </form>
+<br />
+Photo Archieve
+<br />
+<br />
+</article>
+<?php
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+}
+// Check if file already exists
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+?>
+
+
+</body>
+
+</html>
